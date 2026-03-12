@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -14,12 +15,16 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed left-0 right-0 top-0 z-50 flex h-14 w-full items-center justify-between border-b border-san-marino-200/70 bg-white px-4 shadow-sm md:px-6">
-        <Link
-          href="/"
-          className="text-lg font-semibold text-foreground transition-colors hover:text-san-marino-700"
-        >
-          Maria Rossi
+      <header className="fixed left-0 right-0 top-0 z-50 flex h-14 w-full items-center justify-between border-san-marino-200/70 bg-white px-4 shadow-sm md:px-6">
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo.svg"
+            alt="Logo studio psicologico"
+            width={140}
+            height={36}
+            className="h-9 w-auto"
+            priority
+          />
         </Link>
 
         {/* Desktop: horizontal links */}
