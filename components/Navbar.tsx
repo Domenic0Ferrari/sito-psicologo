@@ -14,10 +14,10 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed left-0 right-0 top-0 z-50 flex h-14 w-full items-center justify-between border-b border-azzurro/30 bg-white px-4 shadow-sm md:px-6">
+      <header className="fixed left-0 right-0 top-0 z-50 flex h-14 w-full items-center justify-between border-b border-san-marino-200/70 bg-white px-4 shadow-sm md:px-6">
         <Link
           href="/"
-          className="text-lg font-semibold text-foreground hover:text-arancione transition-colors"
+          className="text-lg font-semibold text-foreground transition-colors hover:text-san-marino-700"
         >
           Maria Rossi
         </Link>
@@ -28,7 +28,7 @@ export default function Navbar() {
             <Link
               key={href}
               href={href}
-              className="text-sm font-medium text-foreground hover:text-azzurro transition-colors"
+              className="text-sm font-medium text-foreground transition-colors hover:text-jordy-blue-600"
             >
               {label}
             </Link>
@@ -38,7 +38,7 @@ export default function Navbar() {
         {/* Mobile: hamburger */}
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded text-foreground hover:text-arancione transition-colors md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded text-foreground transition-colors hover:text-wild-willow-600 md:hidden"
           onClick={() => setOpen((prev) => !prev)}
           aria-expanded={open}
           aria-label={open ? "Chiudi menu" : "Apri menu"}
@@ -86,7 +86,7 @@ export default function Navbar() {
         role="dialog"
         aria-label="Menu di navigazione"
         aria-hidden={!open}
-        className={`fixed left-0 right-0 top-14 z-40 border-b border-azzurro/30 bg-white/95 shadow-lg backdrop-blur-md transition-all duration-200 ease-out md:hidden ${
+        className={`fixed left-0 right-0 top-14 z-40 border-b border-san-marino-200/70 bg-white/95 shadow-lg backdrop-blur-md transition-all duration-200 ease-out md:hidden ${
           open
             ? "translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-2 opacity-0"
@@ -98,7 +98,7 @@ export default function Navbar() {
               key={href}
               href={href}
               onClick={() => setOpen(false)}
-              className="py-3 text-base font-medium text-foreground hover:text-azzurro transition-colors"
+              className="py-3 text-base font-medium text-foreground transition-colors hover:text-jordy-blue-600"
             >
               {label}
             </Link>
