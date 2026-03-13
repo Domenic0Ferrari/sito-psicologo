@@ -7,11 +7,11 @@ export default function Home() {
         <section className="bg-san-marino-50 px-4 py-14 md:px-8 md:py-20">
           <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-san-marino-700">
+              <p className="text-s font-semibold uppercase tracking-[0.28em] text-san-marino-700">
                 Benvenuti
               </p>
-              <h1 className="mt-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
-                Sono la Dottoressa Monica Mastrella
+              <h1 className="mt-4 text-3xl font-semibold tracking-tight md:text-5xl text-san-marino-800">
+                Dottoressa Monica Mastrella
               </h1>
               <p className="mt-4 text-lg text-foreground/90">
                 Psicologa e psicoterapeuta cognitivo-comportamentale. Ricevo in
@@ -23,7 +23,7 @@ export default function Home() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#chi-sono"
-                  className="group inline-flex w-fit items-center justify-center rounded-full bg-foreground px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-foreground/90"
+                  className="group inline-flex w-fit items-center justify-center rounded-full border-2 border-foreground bg-foreground px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-foreground/90"
                 >
                   Chi Sono
                   <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
@@ -32,7 +32,7 @@ export default function Home() {
                 </a>
                 <a
                   href="#contatti"
-                  className="group inline-flex w-fit items-center justify-center rounded-full border border-foreground/30 px-5 py-2.5 text-base font-semibold text-foreground transition-colors hover:border-foreground/60 hover:bg-white/70"
+                  className="bg-white group inline-flex w-fit items-center justify-center rounded-full border border-san-marino-300 px-5 py-2.5 text-base font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100"
                 >
                   Contattami
                   <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
