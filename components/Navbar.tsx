@@ -5,9 +5,11 @@ import Link from "next/link";
 import { useState } from "react";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/chi-sono", label: "Chi sono" },
-  { href: "/contattami", label: "Contattami" },
+  { href: "#top", label: "Home" },
+  { href: "#chi-sono", label: "Chi sono" },
+  { href: "#servizi", label: "Servizi" },
+  { href: "#recensioni", label: "Recensioni" },
+  { href: "#contatti", label: "Contattami" },
 ];
 
 export default function Navbar() {
@@ -28,12 +30,15 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop: horizontal links */}
-        <nav className="hidden md:flex md:items-center md:gap-6" aria-label="Menu principale">
+        <nav
+          className="hidden md:flex md:items-center md:gap-6"
+          aria-label="Menu principale"
+        >
           {navLinks.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
-              className="text-sm font-medium text-foreground transition-colors hover:text-jordy-blue-600"
+              className="text-sm font-medium text-san-marino-800 transition-colors hover:text-san-marino-600"
             >
               {label}
             </Link>
@@ -43,7 +48,7 @@ export default function Navbar() {
         {/* Mobile: hamburger */}
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center rounded text-foreground transition-colors hover:text-wild-willow-600 md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded text-san-marino-800 transition-colors hover:text-san-marino-600 md:hidden"
           onClick={() => setOpen((prev) => !prev)}
           aria-expanded={open}
           aria-label={open ? "Chiudi menu" : "Apri menu"}
@@ -79,7 +84,7 @@ export default function Navbar() {
       {/* Backdrop: semi-trasparente quando menu aperto */}
       <div
         aria-hidden
-        className={`fixed inset-0 top-14 z-30 bg-foreground/10 backdrop-blur-sm transition-opacity duration-200 md:hidden ${
+        className={`fixed inset-0 top-14 z-30 bg-san-marino-900/10 backdrop-blur-sm transition-opacity duration-200 md:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setOpen(false)}
@@ -103,7 +108,7 @@ export default function Navbar() {
               key={href}
               href={href}
               onClick={() => setOpen(false)}
-              className="py-3 text-base font-medium text-foreground transition-colors hover:text-jordy-blue-600"
+              className="py-3 text-base font-medium text-san-marino-800 transition-colors hover:text-san-marino-600"
             >
               {label}
             </Link>

@@ -94,3 +94,16 @@ body {
   color: var(--foreground);
   font-family: var(--font-open-sans), "Open Sans", sans-serif;
 }
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: .9rem;
+}
+
+html {
+  scroll-padding-top: .9rem;
+}

@@ -3,7 +3,7 @@ import ReviewsCarousel from "@/components/ReviewsCarousel";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background pt-14">
+    <div id="top" className="min-h-screen bg-background pt-14">
       <main className="w-full">
         <section className="bg-san-marino-50 px-4 py-14 md:px-8 md:py-20">
           <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[1.1fr_0.9fr]">
