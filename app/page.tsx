@@ -1,4 +1,5 @@
 ﻿import Image from "next/image";
+import ReviewsCarousel from "@/components/ReviewsCarousel";
 
 export default function Home() {
   return (
@@ -23,7 +24,7 @@ export default function Home() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#chi-sono"
-                  className="group inline-flex w-fit items-center justify-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-san-marino-900"
+                  className="group inline-flex w-fit items-center justify-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-san-marino-900 cursor-pointer"
                 >
                   Chi Sono
                   <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
@@ -32,7 +33,7 @@ export default function Home() {
                 </a>
                 <a
                   href="#contatti"
-                  className="bg-white group inline-flex w-fit items-center justify-center rounded-full border border-san-marino-300 px-5 py-2.5 text-base font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100"
+                  className="bg-white group inline-flex w-fit items-center justify-center rounded-full border border-san-marino-300 px-5 py-2.5 text-base font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100 cursor-pointer"
                 >
                   Contattami
                   <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
@@ -83,7 +84,7 @@ export default function Home() {
                 <p className="mt-3 text-base text-san-marino-700">{card.body}</p>
                 <a
                   href={card.cta}
-                  className="group mt-5 inline-flex items-center rounded-full border border-san-marino-300 bg-white px-5 py-2.5 text-sm font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100"
+                  className="group mt-5 inline-flex items-center rounded-full border border-san-marino-300 bg-white px-5 py-2.5 text-sm font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100 cursor-pointer"
                 >
                   Scopri di più
                   <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
@@ -120,7 +121,7 @@ export default function Home() {
               </p>
               <a
                 href="#contatti"
-                className="group mt-6 inline-flex items-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-san-marino-900"
+                className="group mt-6 inline-flex items-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-san-marino-900 cursor-pointer"
               >
                 Contattami
                 <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
@@ -201,7 +202,7 @@ export default function Home() {
                   </p>
                   <a
                     href="#contatti"
-                    className="group mt-5 inline-flex items-center rounded-full border border-san-marino-300 bg-white px-5 py-2.5 text-sm font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100"
+                    className="group mt-5 inline-flex items-center rounded-full border border-san-marino-300 bg-white px-5 py-2.5 text-sm font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100 cursor-pointer"
                   >
                     Contattami
                     <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
@@ -230,7 +231,7 @@ export default function Home() {
               </p>
               <a
                 href="#contatti"
-                className="group mt-6 inline-flex items-center rounded-full border border-san-marino-300 bg-white px-5 py-2.5 text-base font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100"
+                className="group mt-6 inline-flex items-center rounded-full border border-san-marino-300 bg-white px-5 py-2.5 text-base font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100 cursor-pointer"
               >
                 Contattami
                 <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
@@ -257,30 +258,95 @@ export default function Home() {
           </div>
         </section>
 
+        <ReviewsCarousel />
+
         <section
           id="contatti"
           className="bg-white px-4 py-12 md:px-8 md:py-16"
         >
-          <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 rounded-3xl border border-san-marino-100 bg-san-marino-50/70 p-8 md:flex-row md:items-center md:justify-between">
+          <div className="mx-auto flex max-w-6xl flex-col gap-8 rounded-3xl border border-san-marino-100 bg-san-marino-50/70 p-8">
             <div>
               <h2 className="text-2xl font-semibold text-san-marino-800">
-                Richiedi una consulenza o maggiori informazioni
+                Richiedi una consulenza o contattami per maggiori informazioni
               </h2>
-              <p className="mt-3 text-lg text-san-marino-700">
-                Scrivimi per fissare un primo colloquio in studio o online.
+              <p className="mt-4 text-lg font-semibold text-san-marino-800">
+                I miei studi:
               </p>
+              <ul className="mt-3 space-y-2 text-base text-san-marino-700">
+                <li>- Avezzano, Via Montevelino n° 23</li>
+                <li>- Consulenza online</li>
+              </ul>
             </div>
-            <a
-              href="mailto:info@studio.com"
-              className="group inline-flex items-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-san-marino-900"
-            >
-              Contattami
-              <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
-                →
-              </span>
-            </a>
+            <form className="grid gap-4">
+              <label className="grid gap-2 text-sm font-semibold text-san-marino-800">
+                Email
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  className="w-full rounded-2xl border border-san-marino-200 bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
+                />
+              </label>
+              <div className="grid gap-4 md:grid-cols-2">
+                <label className="grid gap-2 text-sm font-semibold text-san-marino-800">
+                  Nome e cognome
+                  <input
+                    type="text"
+                    name="fullName"
+                    required
+                    className="w-full rounded-2xl border border-san-marino-200 bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
+                  />
+                </label>
+                <label className="grid gap-2 text-sm font-semibold text-san-marino-800">
+                  Telefono
+                  <input
+                    type="tel"
+                    name="phone"
+                    className="w-full rounded-2xl border border-san-marino-200 bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
+                  />
+                </label>
+              </div>
+              <label className="grid gap-2 text-sm font-semibold text-san-marino-800">
+                Testo
+                <textarea
+                  name="message"
+                  rows={4}
+                  className="w-full resize-none rounded-2xl border border-san-marino-200 bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
+                />
+              </label>
+              <label className="flex items-start gap-3 text-sm text-san-marino-700">
+                <input
+                  type="checkbox"
+                  name="consent"
+                  required
+                  className="mt-1 h-4 w-4 rounded border-san-marino-300 text-san-marino-800 accent-san-marino-800"
+                />
+                <span>
+                  Acconsento al trattamento dei dati personali ai sensi
+                  dell’art. 13 d.lgs. 30 giugno 2013, n. 196 (EU Regulation
+                  2016/679)
+                </span>
+              </label>
+              <button
+                type="submit"
+                className="group mt-2 inline-flex items-center justify-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-san-marino-900 cursor-pointer"
+              >
+                Invia
+                <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+                  →
+                </span>
+              </button>
+            </form>
           </div>
         </section>
+
+        <footer className="bg-san-marino-50 px-4 py-6 md:px-8">
+          <div className="mx-auto max-w-6xl text-center text-sm text-san-marino-700">
+            Copyright 2026 Monica Mastrella Psicologa - P. IVA 12345678 - Via
+            Montevelino 23 Avezzano (AQ) - Tel: 333 4455666 -
+            monicamastrella@hotmail.it
+          </div>
+        </footer>
       </main>
     </div>
   );
