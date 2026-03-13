@@ -165,20 +165,28 @@ export default function Home() {
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               {[
                 {
-                  title: "Consulenza psicologica",
-                  body: "Per adulti, adolescenti, bambini, coppie e famiglie.",
+                  title: "Ansia e attacchi di panico",
+                  body: "Percorsi per gestire i sintomi, ridurre l’iperattivazione e ritrovare sicurezza.",
                 },
                 {
-                  title: "Genitori e famiglia",
-                  body: "Sostegno alla genitorialità, percorsi familiari, separazioni e adozioni.",
+                  title: "Crisi personali e difficoltà emotive",
+                  body: "Supporto nei momenti di passaggio, lutti, separazioni o blocchi personali.",
                 },
                 {
-                  title: "Benessere e autostima",
-                  body: "Percorsi per ritrovare equilibrio emotivo e fiducia in sé.",
+                  title: "Autostima e relazioni",
+                  body: "Lavoro su confini, comunicazione e immagine di sé per relazioni più sane.",
                 },
                 {
-                  title: "Orientamento scolastico e lavorativo",
-                  body: "Supporto nelle scelte e nello sviluppo del tuo potenziale.",
+                  title: "Cibo e immagine corporea",
+                  body: "Sostegno per ritrovare equilibrio e un rapporto più sereno con il corpo.",
+                },
+                {
+                  title: "Traumi ed EMDR",
+                  body: "Elaborazione di esperienze traumatiche con protocolli EMDR evidence-based.",
+                },
+                {
+                  title: "Adolescenza",
+                  body: "Spazio dedicato a difficoltà emotive, scolastiche e relazionali dell’età evolutiva.",
                 },
               ].map((service) => (
                 <div
