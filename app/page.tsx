@@ -214,7 +214,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-san-marino-900 px-4 py-14 text-white md:px-8 md:py-20">
+        <section className="bg-san-marino-900 px-4 py-10 text-white md:px-8 md:py-14">
           <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1.1fr_0.9fr]">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-san-marino-100">
