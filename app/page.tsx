@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 
 export default function Home() {
   return (
@@ -13,7 +13,7 @@ export default function Home() {
               <h1 className="mt-4 text-3xl font-semibold tracking-tight md:text-5xl text-san-marino-800">
                 Dottoressa Monica Mastrella
               </h1>
-              <p className="mt-4 text-lg text-foreground/90">
+              <p className="mt-4 text-lg text-san-marino-700">
                 Psicologa e psicoterapeuta cognitivo-comportamentale. Ricevo in
                 studio e propongo consulenze anche online.
               </p>
@@ -23,7 +23,7 @@ export default function Home() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#chi-sono"
-                  className="group inline-flex w-fit items-center justify-center rounded-full border-2 border-foreground bg-foreground px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-foreground/90"
+                  className="group inline-flex w-fit items-center justify-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-san-marino-900"
                 >
                   Chi Sono
                   <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
@@ -58,32 +58,32 @@ export default function Home() {
           <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
             {[
               {
-                title: "Psicologia e psicoterapia",
-                body: "Consulenze psicologiche e psicoterapia per adulti, adolescenti e coppie.",
+                title: "Ansia e stress",
+                body: "Ansia, attacchi di panico e gestione dello stress.",
                 cta: "#servizi",
               },
               {
-                title: "Benessere e autostima",
-                body: "Percorsi di crescita personale per ritrovare equilibrio, fiducia e risorse.",
+                title: "Crisi personali",
+                body: "Momenti di difficoltà emotiva o di crisi personale.",
                 cta: "#servizi",
               },
               {
-                title: "Affidati a me",
-                body: "Un percorso su misura per comprendere te stesso e superare i blocchi.",
-                cta: "#contatti",
+                title: "Autostima e relazioni",
+                body: "Problemi di autostima e difficoltà nelle relazioni.",
+                cta: "#servizi",
               },
             ].map((card) => (
               <div
                 key={card.title}
                 className="rounded-3xl border border-san-marino-100 bg-san-marino-50/60 p-6 shadow-sm"
               >
-                <h3 className="text-lg font-semibold text-foreground">
+                <h3 className="text-lg font-semibold text-san-marino-800">
                   {card.title}
                 </h3>
-                <p className="mt-3 text-base text-foreground/85">{card.body}</p>
+                <p className="mt-3 text-base text-san-marino-700">{card.body}</p>
                 <a
                   href={card.cta}
-                  className="group mt-5 inline-flex items-center text-sm font-semibold text-san-marino-700"
+                  className="group mt-5 inline-flex items-center rounded-full border border-san-marino-300 bg-white px-5 py-2.5 text-sm font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100"
                 >
                   Scopri di più
                   <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
@@ -104,21 +104,23 @@ export default function Home() {
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-wild-willow-700">
                 Benvenuti nel mio studio
               </p>
-              <h2 className="mt-4 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+              <h2 className="mt-4 text-2xl font-semibold tracking-tight text-wild-willow-800 md:text-3xl">
                 Sono la Dottoressa Monica Mastrella
               </h2>
-              <p className="mt-4 text-lg text-foreground/90">
-                Credo in un approccio autentico e concreto: ascolto, metodo e
-                strumenti chiari per aiutarti a ritrovare benessere e
-                consapevolezza.
+              <p className="mt-4 text-lg text-wild-willow-700">
+                Nel mio lavoro offro supporto psicologico e percorsi di
+                psicoterapia per adulti e adolescenti che attraversano momenti
+                di difficoltà emotiva, relazionale o personale.
               </p>
-              <p className="mt-4 text-lg text-foreground/90">
-                Insieme definiamo obiettivi realistici e lavoriamo sul presente
-                per costruire un cambiamento duraturo.
+              <p className="mt-4 text-lg text-wild-willow-700">
+                Con un approccio scientificamente fondato e uno spazio di
+                ascolto accogliente, accompagno le persone nel comprendere
+                meglio se stesse, affrontare le proprie difficoltà e sviluppare
+                nuove risorse per il proprio benessere.
               </p>
               <a
                 href="#contatti"
-                className="group mt-6 inline-flex items-center rounded-full bg-foreground px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-foreground/90"
+                className="group mt-6 inline-flex items-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-san-marino-900"
               >
                 Contattami
                 <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
@@ -127,16 +129,16 @@ export default function Home() {
               </a>
             </div>
             <div className="rounded-3xl border border-wild-willow-100 bg-white/70 p-6 shadow-sm">
-              <h3 className="text-lg font-semibold text-foreground">
+              <h3 className="text-lg font-semibold text-wild-willow-800">
                 Formazione e qualifiche
               </h3>
-              <ul className="mt-4 space-y-3 text-base text-foreground/85">
+              <ul className="mt-4 space-y-3 text-base text-wild-willow-700">
                 {[
-                  "Laurea in Psicologia presso l’Università degli Studi di [Nome].",
-                  "Specializzazione in psicoterapia cognitivo-comportamentale.",
-                  "Iscrizione all’Albo degli Psicologi della [Regione] n. 12345.",
-                  "Formazione continua in EMDR e mindfulness clinica.",
-                  "Attivita professionale in studio e online.",
+                  "Laurea in Psicologia Clinica e della Salute presso l’Università  degli Studi “Gabriele d’Annunzio” di Chieti, con votazione 110 e lode.",
+                  "Master di II livello in Psicodiagnostica e Valutazione Psicologica presso l’Università LUMSA di Roma.",
+                  "Specializzazione in Psicoterapia Cognitivo-Comportamentale presso l’Istituto Beck di Roma",
+                  "Abilitazione alla psicoterapia EMDR.",
+                  "Corso di perfezionamento in CBT-E (Enhanced Cognitive Behavioural Therapy) presso il Centro per i Disturbi dell’Alimentazione di Verona diretto dal Dott. Riccardo Dalle Grave",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="mt-1 inline-flex h-2.5 w-2.5 flex-none rounded-full bg-wild-willow-400" />
@@ -153,10 +155,10 @@ export default function Home() {
           className="bg-jordy-blue-50 px-4 py-12 md:px-8 md:py-16"
         >
           <div className="mx-auto max-w-6xl">
-            <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+            <h2 className="text-2xl font-semibold tracking-tight text-jordy-blue-800 md:text-3xl">
               Servizi principali
             </h2>
-            <p className="mt-4 text-lg text-foreground/90">
+            <p className="mt-4 text-lg text-jordy-blue-700">
               Percorsi pensati per accompagnarti nei momenti di difficoltà e
               nelle fasi di crescita personale.
             </p>
@@ -183,15 +185,15 @@ export default function Home() {
                   key={service.title}
                   className="rounded-3xl border border-jordy-blue-100 bg-white/80 p-6 shadow-sm"
                 >
-                  <h3 className="text-lg font-semibold text-foreground">
+                  <h3 className="text-lg font-semibold text-jordy-blue-900">
                     {service.title}
                   </h3>
-                  <p className="mt-3 text-base text-foreground/85">
+                  <p className="mt-3 text-base text-jordy-blue-700">
                     {service.body}
                   </p>
                   <a
                     href="#contatti"
-                    className="group mt-5 inline-flex items-center text-sm font-semibold text-jordy-blue-700"
+                    className="group mt-5 inline-flex items-center rounded-full border border-san-marino-300 bg-white px-5 py-2.5 text-sm font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100"
                   >
                     Contattami
                     <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
@@ -220,7 +222,7 @@ export default function Home() {
               </p>
               <a
                 href="#contatti"
-                className="group mt-6 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-base font-semibold text-san-marino-900 transition-colors hover:bg-san-marino-50"
+                className="group mt-6 inline-flex items-center rounded-full border border-san-marino-300 bg-white px-5 py-2.5 text-base font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100"
               >
                 Contattami
                 <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
@@ -253,16 +255,16 @@ export default function Home() {
         >
           <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 rounded-3xl border border-san-marino-100 bg-san-marino-50/70 p-8 md:flex-row md:items-center md:justify-between">
             <div>
-              <h2 className="text-2xl font-semibold text-foreground">
+              <h2 className="text-2xl font-semibold text-san-marino-800">
                 Richiedi una consulenza o maggiori informazioni
               </h2>
-              <p className="mt-3 text-lg text-foreground/85">
+              <p className="mt-3 text-lg text-san-marino-700">
                 Scrivimi per fissare un primo colloquio in studio o online.
               </p>
             </div>
             <a
               href="mailto:info@studio.com"
-              className="group inline-flex items-center rounded-full bg-foreground px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-foreground/90"
+              className="group inline-flex items-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-san-marino-900"
             >
               Contattami
               <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
