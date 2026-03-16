@@ -6,6 +6,7 @@ type Review = {
   quote: string;
   name: string;
   focus: string;
+  rating: number;
 };
 
 const reviews: Review[] = [
@@ -14,30 +15,35 @@ const reviews: Review[] = [
       "Mi sono sentita accolta fin dal primo incontro. Ho imparato a riconoscere i segnali dell’ansia e a gestirli con strumenti concreti.",
     name: "Giulia, 32",
     focus: "Ansia e attacchi di panico",
+    rating: 5,
   },
   {
     quote:
       "Il percorso mi ha aiutato a ritrovare chiarezza in un momento di forte confusione personale. Un supporto discreto ma molto presente.",
     name: "Marco, 41",
     focus: "Crisi personali",
+    rating: 5,
   },
   {
     quote:
       "Ho lavorato sulla mia autostima e sulle relazioni: oggi mi sento più sicura e capace di comunicare i miei bisogni.",
     name: "Sara, 28",
     focus: "Autostima e relazioni",
+    rating: 5,
   },
   {
     quote:
       "Il lavoro con l’EMDR è stato delicato e rispettoso. Ho potuto rielaborare eventi che mi bloccavano da anni.",
     name: "Luca, 37",
     focus: "Traumi ed EMDR",
+    rating: 5,
   },
   {
     quote:
       "Per mio figlio adolescente è stato importante avere uno spazio di ascolto. Ha ritrovato motivazione e serenità.",
     name: "Paola, 45",
     focus: "Adolescenza",
+    rating: 4
   },
 ];
 
@@ -109,8 +115,28 @@ export default function ReviewsCarousel() {
           {pageReviews.map((review, reviewIndex) => (
             <div
               key={`${review.name}-${reviewIndex}`}
-              className="rounded-3xl border border-san-marino-100 bg-white/90 p-8 shadow-sm"
+              className="rounded-3xl border border-san-marino-100 bg-white/90 p-8 pt-6 shadow-sm"
             >
+              <div className="flex items-center gap-1 text-san-marino-700 mb-3">
+                {Array.from({ length: 5 }).map((_, starIndex) => (
+                  <svg
+                    key={`${review.name}-star-${starIndex}`}
+                    aria-hidden
+                    viewBox="0 0 24 24"
+                    className={`h-4 w-4 ${
+                      starIndex < review.rating
+                        ? "text-amber-400"
+                        : "text-san-marino-200"
+                    }`}
+                    fill="currentColor"
+                  >
+                    <path d="M12 17.3 18.2 21l-1.7-7L22 9.2l-7.2-.6L12 2 9.2 8.6 2 9.2l5.5 4.8L5.8 21 12 17.3Z" />
+                  </svg>
+                ))}
+                <span className="sr-only">
+                  Valutazione {review.rating} su 5
+                </span>
+              </div>
               <p className="text-lg text-san-marino-800 md:text-xl">
                 “{review.quote}”
               </p>
