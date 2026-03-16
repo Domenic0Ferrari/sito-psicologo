@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Review = {
   quote: string;
@@ -43,9 +43,21 @@ const reviews: Review[] = [
 
 export default function ReviewsCarousel() {
   const total = reviews.length;
-  const pageSize = 2;
-  const totalPages = Math.ceil(total / pageSize);
+  const [pageSize, setPageSize] = useState(1);
   const [pageIndex, setPageIndex] = useState(0);
+  const totalPages = Math.ceil(total / pageSize);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const handleChange = () => setPageSize(mediaQuery.matches ? 2 : 1);
+    handleChange();
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  useEffect(() => {
+    setPageIndex((prev) => Math.min(prev, Math.max(totalPages - 1, 0)));
+  }, [totalPages]);
   const start = pageIndex * pageSize;
   const pageReviews = reviews.slice(start, start + pageSize);
   const end = Math.min(start + pageSize, total);
@@ -97,9 +109,7 @@ export default function ReviewsCarousel() {
           {pageReviews.map((review, reviewIndex) => (
             <div
               key={`${review.name}-${reviewIndex}`}
-              className={`rounded-3xl border border-san-marino-100 bg-white/90 p-8 shadow-sm ${
-                reviewIndex === 1 ? "hidden md:block" : ""
-              }`}
+              className="rounded-3xl border border-san-marino-100 bg-white/90 p-8 shadow-sm"
             >
               <p className="text-lg text-san-marino-800 md:text-xl">
                 “{review.quote}”
@@ -116,9 +126,15 @@ export default function ReviewsCarousel() {
           ))}
         </div>
         <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-sm text-san-marino-700">
-          <span>
-            Recensioni {start + 1}-{end} di {total}
-          </span>
+          {pageSize === 1 ? (
+            <span>
+              Recensione {start + 1} di {total}
+            </span>
+          ) : (
+            <span>
+              Recensioni {start + 1}-{end} di {total}
+            </span>
+          )}
           <div className="flex items-center gap-2">
             {Array.from({ length: totalPages }).map((_, dotIndex) => (
               <button

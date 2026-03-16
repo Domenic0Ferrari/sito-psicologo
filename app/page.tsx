@@ -6,7 +6,11 @@ import ReviewsCarousel from "@/components/ReviewsCarousel";
 
 export default function Home() {
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
   const errorTimerRef = useRef<number | null>(null);
+  const statusTimerRef = useRef<number | null>(null);
 
   useEffect(() => {
     if (Object.keys(formErrors).length === 0) {
@@ -29,6 +33,15 @@ export default function Home() {
       }
     };
   }, [formErrors]);
+
+  useEffect(() => {
+    return () => {
+      if (statusTimerRef.current) {
+        window.clearTimeout(statusTimerRef.current);
+        statusTimerRef.current = null;
+      }
+    };
+  }, []);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     const form = event.currentTarget;
@@ -69,6 +82,41 @@ export default function Home() {
     }
 
     setFormErrors({});
+    event.preventDefault();
+    setFormStatus("sending");
+
+    const payload = {
+      email,
+      fullName,
+      phone,
+      message,
+      consent,
+    };
+
+    fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Errore invio");
+        }
+        setFormStatus("success");
+        form.reset();
+      })
+      .catch(() => {
+        setFormStatus("error");
+      })
+      .finally(() => {
+        if (statusTimerRef.current) {
+          window.clearTimeout(statusTimerRef.current);
+        }
+        statusTimerRef.current = window.setTimeout(() => {
+          setFormStatus("idle");
+          statusTimerRef.current = null;
+        }, 3000);
+      });
   };
 
   return (
@@ -468,14 +516,64 @@ export default function Home() {
               )}
               <button
                 type="submit"
-                className="group mt-2 inline-flex items-center justify-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-san-marino-900 cursor-pointer"
+                className="group mt-2 inline-flex items-center justify-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-san-marino-900 disabled:cursor-not-allowed disabled:opacity-70"
+                disabled={formStatus === "sending"}
               >
-                Invia
+                {formStatus === "sending" ? "Invio..." : "Invia"}
                 <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1">
                   →
                 </span>
               </button>
+              {formStatus === "success" && (
+                <span className="text-xs font-semibold text-emerald-700">
+                  Messaggio inviato correttamente.
+                </span>
+              )}
+              {formStatus === "error" && (
+                <span className="text-xs font-semibold text-red-600">
+                  Errore durante l’invio. Riprova tra poco.
+                </span>
+              )}
             </form>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <span className="text-sm font-semibold text-san-marino-800">
+                Puoi trovarmi anche su
+              </span>
+              <a
+                href="https://www.facebook.com/share/181hsHPg6q/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Facebook"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-san-marino-200 bg-white text-san-marino-700 transition-colors hover:border-san-marino-400 hover:text-san-marino-900"
+              >
+                <svg
+                  aria-hidden
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5"
+                  fill="currentColor"
+                >
+                  <path d="M13.5 9.5H16l-.3 2.8h-2.2V20h-3V12.3H8.4V9.5h2.1V7.6c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1V7h-1c-1 0-1.3.6-1.3 1.2v1.3Z" />
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/momas_92?igsh=MWxhZWdldzc3YWo4Nw=="
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-san-marino-200 bg-white text-san-marino-700 transition-colors hover:border-san-marino-400 hover:text-san-marino-900"
+              >
+                <svg
+                  aria-hidden
+                  viewBox="0 0 24 24"
+                  className="h-5 w-5"
+                  fill="currentColor"
+                >
+                  <path d="M16.5 7.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" />
+                  <path d="M12 8.3A3.7 3.7 0 1 0 12 15.7 3.7 3.7 0 0 0 12 8.3Zm0 6A2.3 2.3 0 1 1 12 9.7a2.3 2.3 0 0 1 0 4.6Z" />
+                  <path d="M16.8 4H7.2A3.2 3.2 0 0 0 4 7.2v9.6A3.2 3.2 0 0 0 7.2 20h9.6a3.2 3.2 0 0 0 3.2-3.2V7.2A3.2 3.2 0 0 0 16.8 4Zm1.7 12.8a1.7 1.7 0 0 1-1.7 1.7H7.2a1.7 1.7 0 0 1-1.7-1.7V7.2A1.7 1.7 0 0 1 7.2 5.5h9.6a1.7 1.7 0 0 1 1.7 1.7Z" />
+                </svg>
+              </a>
+            </div>
           </div>
         </section>
 

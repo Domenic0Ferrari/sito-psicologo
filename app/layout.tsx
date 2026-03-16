@@ -97,7 +97,10 @@ const jsonLd = {
         addressCountry: "IT",
       },
       areaServed: ["Avezzano", "Online"],
-      sameAs: ["https://www.instagram.com/momas_92?igsh=MWxhZWdldzc3YWo4Nw=="],
+      sameAs: [
+        "https://www.instagram.com/momas_92?igsh=MWxhZWdldzc3YWo4Nw==",
+        "https://www.facebook.com/share/181hsHPg6q/?mibextid=wwXIfr",
+      ],
     },
     {
       "@type": ["LocalBusiness", "MedicalBusiness"],
@@ -118,7 +121,10 @@ const jsonLd = {
         addressCountry: "IT",
       },
       areaServed: ["Avezzano", "Online"],
-      sameAs: ["https://www.instagram.com/momas_92?igsh=MWxhZWdldzc3YWo4Nw=="],
+      sameAs: [
+        "https://www.instagram.com/momas_92?igsh=MWxhZWdldzc3YWo4Nw==",
+        "https://www.facebook.com/share/181hsHPg6q/?mibextid=wwXIfr",
+      ],
     },
   ],
 };
