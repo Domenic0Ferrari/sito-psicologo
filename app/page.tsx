@@ -238,7 +238,7 @@ export default function Home() {
               </p>
               <a
                 href="#contatti"
-                className="group mt-6 inline-flex items-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-san-marino-900 cursor-pointer"
+                className="group mt-6 inline-flex items-center rounded-full border-2 border-wild-willow-800 bg-wild-willow-800 px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-wild-willow-900 cursor-pointer"
               >
                 Contattami
                 <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1">
