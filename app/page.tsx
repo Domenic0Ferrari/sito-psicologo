@@ -81,7 +81,7 @@ export default function Home() {
                 Benvenuti
               </p>
               <h1 className="mt-4 text-3xl font-semibold tracking-tight md:text-5xl text-san-marino-800">
-                Dottoressa Monica Mastrella
+                Dottoressa Monica Mastrella, psicologa ad Avezzano
               </h1>
               <p className="mt-4 text-lg text-san-marino-700">
                 Psicologa e psicoterapeuta cognitivo-comportamentale. Ricevo in
@@ -114,7 +114,7 @@ export default function Home() {
             <div className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[32px] border border-san-marino-100 bg-white/70 shadow-lg">
               <Image
                 src="/profilo_1.jpeg"
-                alt="Ritratto della Dottoressa Monica Mastrella"
+                alt="Ritratto della Dottoressa Monica Mastrella, psicologa ad Avezzano"
                 fill
                 className="object-cover object-center"
                 sizes="(min-width: 768px) 40vw, 80vw"
@@ -355,7 +355,7 @@ export default function Home() {
                 I miei studi:
               </p>
               <ul className="mt-3 space-y-2 text-base text-san-marino-700">
-                <li>- Avezzano, Via Montevelino n° 23</li>
+                <li>- Avezzano, Via XX Settembre n° 74</li>
                 <li>- Consulenza online</li>
               </ul>
             </div>
@@ -482,7 +482,7 @@ export default function Home() {
         <footer className="bg-san-marino-50 px-4 py-6 md:px-8">
           <div className="mx-auto max-w-6xl text-center text-xs text-san-marino-700">
             Copyright 2026 Monica Mastrella Psicologa - P. IVA 12345678 - Via
-            Montevelino 23 Avezzano (AQ) - Tel: 333 4455666 -
+            XX Settembre 74 Avezzano (AQ) - Tel: 3276504478 -
             monicamastrella@hotmail.it
           </div>
         </footer>

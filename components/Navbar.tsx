@@ -21,7 +21,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center">
           <Image
             src="/logo.svg"
-            alt="Logo studio psicologico"
+            alt="Logo Dottoressa Monica Mastrella"
             width={140}
             height={36}
             className="h-9 w-auto"
