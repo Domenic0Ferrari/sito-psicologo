@@ -91,7 +91,7 @@ export default function ReviewsCarousel() {
               terapeutico può aiutare nei momenti di difficoltà.
             </p>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <button
               type="button"
               onClick={goPrev}
@@ -151,17 +151,30 @@ export default function ReviewsCarousel() {
             </div>
           ))}
         </div>
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-sm text-san-marino-700">
-          {pageSize === 1 ? (
-            <span>
-              Recensione {start + 1} di {total}
+        <div className="mt-6 flex flex-col gap-4 text-sm text-san-marino-700 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col items-start gap-3">
+            <span className="text-sm font-semibold text-san-marino-800">
+              Racconta la tua esperienza.
             </span>
-          ) : (
-            <span>
-              Recensioni {start + 1}-{end} di {total}
-            </span>
-          )}
-          <div className="flex items-center gap-2">
+            <a
+              href="/nuovarecensione"
+              className="inline-flex items-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-san-marino-900 cursor-pointer"
+              aria-label="Aggiungi una recensione"
+            >
+              Aggiungi
+            </a>
+          </div>
+          <div className="flex flex-wrap items-center gap-4">
+            {pageSize === 1 ? (
+              <span>
+                Recensione {start + 1} di {total}
+              </span>
+            ) : (
+              <span>
+                Recensioni {start + 1}-{end} di {total}
+              </span>
+            )}
+            <div className="flex items-center gap-2">
             {Array.from({ length: totalPages }).map((_, dotIndex) => (
               <button
                 key={`review-dot-${dotIndex}`}
@@ -175,6 +188,7 @@ export default function ReviewsCarousel() {
                 aria-label={`Vai alla pagina ${dotIndex + 1}`}
               />
             ))}
+            </div>
           </div>
         </div>
       </div>
