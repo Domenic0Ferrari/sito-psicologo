@@ -1,7 +1,76 @@
-﻿import Image from "next/image";
+﻿"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 
 export default function Home() {
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const errorTimerRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (Object.keys(formErrors).length === 0) {
+      return;
+    }
+
+    if (errorTimerRef.current) {
+      window.clearTimeout(errorTimerRef.current);
+    }
+
+    errorTimerRef.current = window.setTimeout(() => {
+      setFormErrors({});
+      errorTimerRef.current = null;
+    }, 3000);
+
+    return () => {
+      if (errorTimerRef.current) {
+        window.clearTimeout(errorTimerRef.current);
+        errorTimerRef.current = null;
+      }
+    };
+  }, [formErrors]);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const nextErrors: Record<string, string> = {};
+
+    const email = String(data.get("email") ?? "").trim();
+    const fullName = String(data.get("fullName") ?? "").trim();
+    const phone = String(data.get("phone") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+    const consent = data.get("consent") === "on";
+
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+      nextErrors.email = "Inserisci un'email valida.";
+    }
+    if (!fullName) {
+      nextErrors.fullName = "Inserisci nome e cognome.";
+    }
+    if (!phone) {
+      nextErrors.phone = "Inserisci un numero di telefono.";
+    }
+    if (!message) {
+      nextErrors.message = "Scrivi un breve messaggio.";
+    }
+    if (!consent) {
+      nextErrors.consent = "È necessario accettare il trattamento dei dati.";
+    }
+
+    if (Object.keys(nextErrors).length > 0) {
+      event.preventDefault();
+      setFormErrors(nextErrors);
+      const firstField = Object.keys(nextErrors)[0];
+      const firstElement = form.elements.namedItem(firstField);
+      if (firstElement && "focus" in firstElement) {
+        (firstElement as HTMLElement).focus();
+      }
+      return;
+    }
+
+    setFormErrors({});
+  };
+
   return (
     <div id="top" className="min-h-screen bg-background pt-14">
       <main className="w-full">
@@ -290,15 +359,24 @@ export default function Home() {
                 <li>- Consulenza online</li>
               </ul>
             </div>
-            <form className="grid gap-4">
+            <form className="grid gap-4" noValidate onSubmit={handleSubmit}>
               <label className="grid gap-2 text-sm font-semibold text-san-marino-800">
                 Email
                 <input
                   type="email"
                   name="email"
                   required
-                  className="w-full rounded-2xl border border-san-marino-200 bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
+                  aria-invalid={Boolean(formErrors.email)}
+                  aria-describedby={formErrors.email ? "email-error" : undefined}
+                  className={`w-full rounded-2xl border bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400 ${
+                    formErrors.email ? "border-red-400" : "border-san-marino-200"
+                  }`}
                 />
+                {formErrors.email && (
+                  <span id="email-error" className="text-xs text-red-600">
+                    {formErrors.email}
+                  </span>
+                )}
               </label>
               <div className="grid gap-4 md:grid-cols-2">
                 <label className="grid gap-2 text-sm font-semibold text-san-marino-800">
@@ -307,31 +385,74 @@ export default function Home() {
                     type="text"
                     name="fullName"
                     required
-                    className="w-full rounded-2xl border border-san-marino-200 bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
+                    aria-invalid={Boolean(formErrors.fullName)}
+                    aria-describedby={
+                      formErrors.fullName ? "fullname-error" : undefined
+                    }
+                    className={`w-full rounded-2xl border bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400 ${
+                      formErrors.fullName
+                        ? "border-red-400"
+                        : "border-san-marino-200"
+                    }`}
                   />
+                  {formErrors.fullName && (
+                    <span id="fullname-error" className="text-xs text-red-600">
+                      {formErrors.fullName}
+                    </span>
+                  )}
                 </label>
                 <label className="grid gap-2 text-sm font-semibold text-san-marino-800">
                   Telefono
                   <input
                     type="tel"
                     name="phone"
-                    className="w-full rounded-2xl border border-san-marino-200 bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
+                    required
+                    aria-invalid={Boolean(formErrors.phone)}
+                    aria-describedby={
+                      formErrors.phone ? "phone-error" : undefined
+                    }
+                    className={`w-full rounded-2xl border bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400 ${
+                      formErrors.phone ? "border-red-400" : "border-san-marino-200"
+                    }`}
                   />
+                  {formErrors.phone && (
+                    <span id="phone-error" className="text-xs text-red-600">
+                      {formErrors.phone}
+                    </span>
+                  )}
                 </label>
               </div>
               <label className="grid gap-2 text-sm font-semibold text-san-marino-800">
-                Testo
+                Messaggio
                 <textarea
                   name="message"
                   rows={4}
-                  className="w-full resize-none rounded-2xl border border-san-marino-200 bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
+                  required
+                  aria-invalid={Boolean(formErrors.message)}
+                  aria-describedby={
+                    formErrors.message ? "message-error" : undefined
+                  }
+                  className={`w-full resize-none rounded-2xl border bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400 ${
+                    formErrors.message
+                      ? "border-red-400"
+                      : "border-san-marino-200"
+                  }`}
                 />
+                {formErrors.message && (
+                  <span id="message-error" className="text-xs text-red-600">
+                    {formErrors.message}
+                  </span>
+                )}
               </label>
               <label className="flex items-start gap-3 text-sm text-san-marino-700">
                 <input
                   type="checkbox"
                   name="consent"
                   required
+                  aria-invalid={Boolean(formErrors.consent)}
+                  aria-describedby={
+                    formErrors.consent ? "consent-error" : undefined
+                  }
                   className="mt-1 h-4 w-4 rounded border-san-marino-300 text-san-marino-800 accent-san-marino-800"
                 />
                 <span>
@@ -340,9 +461,14 @@ export default function Home() {
                   2016/679)
                 </span>
               </label>
+              {formErrors.consent && (
+                <span id="consent-error" className="text-xs text-red-600">
+                  {formErrors.consent}
+                </span>
+              )}
               <button
                 type="submit"
-                className="group mt-2 inline-flex items-center justify-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-san-marino-900 cursor-pointer"
+                className="group mt-2 inline-flex items-center justify-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-san-marino-900 cursor-pointer"
               >
                 Invia
                 <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1">
@@ -354,7 +480,7 @@ export default function Home() {
         </section>
 
         <footer className="bg-san-marino-50 px-4 py-6 md:px-8">
-          <div className="mx-auto max-w-6xl text-center text-sm text-san-marino-700">
+          <div className="mx-auto max-w-6xl text-center text-xs text-san-marino-700">
             Copyright 2026 Monica Mastrella Psicologa - P. IVA 12345678 - Via
             Montevelino 23 Avezzano (AQ) - Tel: 333 4455666 -
             monicamastrella@hotmail.it
