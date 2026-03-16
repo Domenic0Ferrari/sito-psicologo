@@ -42,12 +42,17 @@ const reviews: Review[] = [
 ];
 
 export default function ReviewsCarousel() {
-  const [index, setIndex] = useState(0);
   const total = reviews.length;
-  const current = reviews[index];
+  const pageSize = 2;
+  const totalPages = Math.ceil(total / pageSize);
+  const [pageIndex, setPageIndex] = useState(0);
+  const start = pageIndex * pageSize;
+  const pageReviews = reviews.slice(start, start + pageSize);
+  const end = Math.min(start + pageSize, total);
 
-  const goPrev = () => setIndex((prev) => (prev - 1 + total) % total);
-  const goNext = () => setIndex((prev) => (prev + 1) % total);
+  const goPrev = () =>
+    setPageIndex((prev) => (prev - 1 + totalPages) % totalPages);
+  const goNext = () => setPageIndex((prev) => (prev + 1) % totalPages);
 
   return (
     <section
@@ -88,40 +93,46 @@ export default function ReviewsCarousel() {
           </div>
         </div>
 
-        <div
-          className="mt-8 rounded-3xl border border-san-marino-100 bg-white/90 p-8 shadow-sm"
-          aria-live="polite"
-        >
-          <p className="text-lg text-san-marino-800 md:text-xl">
-            “{current.quote}”
-          </p>
-          <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-san-marino-700">
-            <span className="rounded-full bg-san-marino-100 px-3 py-1 text-san-marino-700">
-              {current.focus}
-            </span>
-            <span className="font-semibold text-san-marino-800">
-              {current.name}
-            </span>
-          </div>
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-sm text-san-marino-700">
-            <span>
-              Recensione {index + 1} di {total}
-            </span>
-            <div className="flex items-center gap-2">
-              {reviews.map((_, dotIndex) => (
-                <button
-                  key={`review-dot-${dotIndex}`}
-                  type="button"
-                  onClick={() => setIndex(dotIndex)}
-                  className={`h-2.5 w-2.5 rounded-full transition-colors cursor-pointer ${
-                    dotIndex === index
-                      ? "bg-san-marino-800"
-                      : "bg-san-marino-200 hover:bg-san-marino-300"
-                  }`}
-                  aria-label={`Vai alla recensione ${dotIndex + 1}`}
-                />
-              ))}
+        <div className="mt-8 grid gap-6 md:grid-cols-2" aria-live="polite">
+          {pageReviews.map((review, reviewIndex) => (
+            <div
+              key={`${review.name}-${reviewIndex}`}
+              className={`rounded-3xl border border-san-marino-100 bg-white/90 p-8 shadow-sm ${
+                reviewIndex === 1 ? "hidden md:block" : ""
+              }`}
+            >
+              <p className="text-lg text-san-marino-800 md:text-xl">
+                “{review.quote}”
+              </p>
+              <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-san-marino-700">
+                <span className="rounded-full bg-san-marino-100 px-3 py-1 text-san-marino-700">
+                  {review.focus}
+                </span>
+                <span className="font-semibold text-san-marino-800">
+                  {review.name}
+                </span>
+              </div>
             </div>
+          ))}
+        </div>
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-sm text-san-marino-700">
+          <span>
+            Recensioni {start + 1}-{end} di {total}
+          </span>
+          <div className="flex items-center gap-2">
+            {Array.from({ length: totalPages }).map((_, dotIndex) => (
+              <button
+                key={`review-dot-${dotIndex}`}
+                type="button"
+                onClick={() => setPageIndex(dotIndex)}
+                className={`h-2.5 w-2.5 rounded-full transition-colors cursor-pointer ${
+                  dotIndex === pageIndex
+                    ? "bg-san-marino-800"
+                    : "bg-san-marino-200 hover:bg-san-marino-300"
+                }`}
+                aria-label={`Vai alla pagina ${dotIndex + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ export default function Home() {
                   className="group inline-flex w-fit items-center justify-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-san-marino-900 cursor-pointer"
                 >
                   Chi Sono
-                  <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+                  <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1">
                     →
                   </span>
                 </a>
@@ -36,7 +36,7 @@ export default function Home() {
                   className="bg-white group inline-flex w-fit items-center justify-center rounded-full border border-san-marino-300 px-5 py-2.5 text-base font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100 cursor-pointer"
                 >
                   Contattami
-                  <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+                  <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1">
                     →
                   </span>
                 </a>
@@ -55,7 +55,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-white px-4 py-12 md:px-8 md:py-16">
+        {/* <section className="bg-white px-4 py-12 md:px-8 md:py-16">
           <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
             {[
               {
@@ -87,14 +87,14 @@ export default function Home() {
                   className="group mt-5 inline-flex items-center rounded-full border border-san-marino-300 bg-white px-5 py-2.5 text-sm font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100 cursor-pointer"
                 >
                   Scopri di più
-                  <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+                  <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1">
                     →
                   </span>
                 </a>
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
 
         <section
           id="chi-sono"
@@ -124,7 +124,7 @@ export default function Home() {
                 className="group mt-6 inline-flex items-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-base font-semibold text-background transition-colors hover:bg-san-marino-900 cursor-pointer"
               >
                 Contattami
-                <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+                <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1">
                   →
                 </span>
               </a>
@@ -133,20 +133,33 @@ export default function Home() {
               <h3 className="text-lg font-semibold text-wild-willow-800">
                 Formazione e qualifiche
               </h3>
-              <ul className="mt-4 space-y-3 text-base text-wild-willow-700">
-                {[
-                  "Laurea in Psicologia Clinica e della Salute presso l’Università  degli Studi “Gabriele d’Annunzio” di Chieti, con votazione 110 e lode.",
-                  "Master di II livello in Psicodiagnostica e Valutazione Psicologica presso l’Università LUMSA di Roma.",
-                  "Specializzazione in Psicoterapia Cognitivo-Comportamentale presso l’Istituto Beck di Roma",
-                  "Abilitazione alla psicoterapia EMDR.",
-                  "Corso di perfezionamento in CBT-E (Enhanced Cognitive Behavioural Therapy) presso il Centro per i Disturbi dell’Alimentazione di Verona diretto dal Dott. Riccardo Dalle Grave",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="mt-1 inline-flex h-2.5 w-2.5 flex-none rounded-full bg-wild-willow-400" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="relative mt-4 pl-8">
+                <div className="pointer-events-none absolute bottom-1 left-3 top-1 w-px bg-wild-willow-200" />
+                <ul className="space-y-5 text-base text-wild-willow-700">
+                  {[
+                    {
+                      text: "Laurea in Psicologia Clinica e della Salute presso l’Università  degli Studi “Gabriele d’Annunzio” di Chieti, con votazione 110 e lode.",
+                    },
+                    {
+                      text: "Master di II livello in Psicodiagnostica e Valutazione Psicologica presso l’Università LUMSA di Roma.",
+                    },
+                    {
+                      text: "Specializzazione in Psicoterapia Cognitivo-Comportamentale presso l’Istituto Beck di Roma",
+                    },
+                    {
+                      text: "Abilitazione alla psicoterapia EMDR.",
+                    },
+                    {
+                      text: "Corso di perfezionamento in CBT-E (Enhanced Cognitive Behavioural Therapy) presso il Centro per i Disturbi dell’Alimentazione di Verona diretto dal Dott. Riccardo Dalle Grave",
+                    },
+                  ].map((item) => (
+                    <li key={item.text} className="relative">
+                      <span className="absolute -left-[22px] top-2 inline-flex h-3 w-3 rounded-full bg-wild-willow-400 ring-4 ring-wild-willow-50" />
+                      <span>{item.text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -205,7 +218,7 @@ export default function Home() {
                     className="group mt-5 inline-flex items-center rounded-full border border-san-marino-300 bg-white px-5 py-2.5 text-sm font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100 cursor-pointer"
                   >
                     Contattami
-                    <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+                    <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1">
                       →
                     </span>
                   </a>
@@ -234,7 +247,7 @@ export default function Home() {
                 className="group mt-6 inline-flex items-center rounded-full border border-san-marino-300 bg-white px-5 py-2.5 text-base font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100 cursor-pointer"
               >
                 Contattami
-                <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+                <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1">
                   →
                 </span>
               </a>
@@ -332,7 +345,7 @@ export default function Home() {
                 className="group mt-2 inline-flex items-center justify-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-san-marino-900 cursor-pointer"
               >
                 Invia
-                <span className="ml-2 inline-block -translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+                <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1">
                   →
                 </span>
               </button>
