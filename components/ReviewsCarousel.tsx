@@ -91,7 +91,7 @@ export default function ReviewsCarousel() {
               terapeutico può aiutare nei momenti di difficoltà.
             </p>
           </div>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-nowrap items-center gap-3">
             <button
               type="button"
               onClick={goPrev}
