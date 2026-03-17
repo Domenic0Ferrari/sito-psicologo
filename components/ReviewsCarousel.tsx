@@ -157,7 +157,7 @@ export default function ReviewsCarousel() {
               Racconta la tua esperienza.
             </span>
             <a
-              href="/nuovarecensione"
+              href="/nuova-recensione"
               className="inline-flex items-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-san-marino-900 cursor-pointer"
               aria-label="Aggiungi una recensione"
             >

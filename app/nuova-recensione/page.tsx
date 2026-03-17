@@ -20,10 +20,10 @@ export default function NuovaRecensionePage() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                href="/#recensioni"
+                href="/"
                 className="group inline-flex items-center rounded-full border border-san-marino-300 bg-white px-5 py-2.5 text-sm font-semibold text-san-marino-800 transition-colors hover:border-san-marino-500 hover:bg-san-marino-100 cursor-pointer"
               >
-                Torna alle recensioni
+                Torna alla Home
                 <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1">
                   →
                 </span>
@@ -42,7 +42,7 @@ export default function NuovaRecensionePage() {
                     type="text"
                     name="fullName"
                     placeholder="Es. Giulia Rossi"
-                    className="w-full rounded-2xl border border-san-marino-200 bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
+                    className="w-full rounded-xl border border-san-marino-200 bg-white px-3 py-2 text-sm text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
                   />
                 </label>
                 <label className="grid gap-2 text-sm font-semibold text-san-marino-800">
@@ -51,7 +51,7 @@ export default function NuovaRecensionePage() {
                     type="email"
                     name="email"
                     placeholder="nome@email.com"
-                    className="w-full rounded-2xl border border-san-marino-200 bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
+                    className="w-full rounded-xl border border-san-marino-200 bg-white px-3 py-2 text-sm text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
                   />
                 </label>
               </div>
@@ -61,7 +61,7 @@ export default function NuovaRecensionePage() {
                   Ambito del percorso
                   <select
                     name="focus"
-                    className="w-full rounded-2xl border border-san-marino-200 bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
+                    className="w-full rounded-xl border border-san-marino-200 bg-white px-3 py-2 text-sm text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
                     defaultValue=""
                   >
                     <option value="" disabled>
@@ -79,7 +79,7 @@ export default function NuovaRecensionePage() {
                   Valutazione
                   <select
                     name="rating"
-                    className="w-full rounded-2xl border border-san-marino-200 bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
+                    className="w-full rounded-xl border border-san-marino-200 bg-white px-3 py-2 text-sm text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
                     defaultValue="5"
                   >
                     <option value="5">5 - Eccellente</option>
@@ -95,9 +95,9 @@ export default function NuovaRecensionePage() {
                 La tua recensione
                 <textarea
                   name="review"
-                  rows={5}
+                  rows={4}
                   placeholder="Racconta in breve la tua esperienza."
-                  className="w-full resize-none rounded-2xl border border-san-marino-200 bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
+                  className="w-full resize-none rounded-xl border border-san-marino-200 bg-white px-3 py-2 text-sm text-san-marino-800 outline-none transition-colors focus:border-san-marino-400"
                 />
               </label>
 
@@ -108,14 +108,13 @@ export default function NuovaRecensionePage() {
                   className="mt-1 h-4 w-4 rounded border-san-marino-300 text-san-marino-800 accent-san-marino-800"
                 />
                 <span>
-                  Confermo che la mia recensione può essere pubblicata sul sito
-                  e che i dati saranno trattati in modo riservato.
+                  Confermo che la mia recensione può essere pubblicata sul sito e acconsento al trattamento dei dati secondo la <a href="/privacy-policy" className="underline underline-offset-2 hover:text-san-marino-900">Privacy Policy</a>
                 </span>
               </label>
 
               <button
                 type="submit"
-                className="group mt-2 inline-flex items-center justify-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-san-marino-900"
+                className="hover:cursor-pointer group mt-2 inline-flex items-center justify-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-san-marino-900"
               >
                 Invia recensione
                 <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1">
