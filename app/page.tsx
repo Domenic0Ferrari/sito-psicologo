@@ -394,18 +394,45 @@ export default function Home() {
           id="contatti"
           className="bg-white px-4 py-12 md:px-8 md:py-16"
         >
-          <div className="mx-auto flex max-w-6xl flex-col gap-8 rounded-3xl border border-san-marino-100 bg-san-marino-50/70 p-8">
+          <div className="mx-auto flex max-w-6xl flex-col gap-8 rounded-3xl border border-san-marino-100 bg-san-marino-50/70 p-6 md:p-8">
             <div>
               <h2 className="text-2xl font-semibold text-san-marino-800">
                 Richiedi una consulenza o contattami per maggiori informazioni
               </h2>
-              <p className="mt-4 text-lg font-semibold text-san-marino-800">
-                I miei studi:
-              </p>
-              <ul className="mt-3 space-y-2 text-base text-san-marino-700">
-                <li>- Avezzano, Via XX Settembre n° 74</li>
-                <li>- Consulenza online</li>
-              </ul>
+              <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+                <div>
+                  <p className="text-lg font-semibold text-san-marino-800">
+                    I miei studi:
+                  </p>
+                  <ul className="mt-3 space-y-2 text-base text-san-marino-700">
+                    <li>- Avezzano, Via XX Settembre n° 74</li>
+                    <li>- Consulenza online</li>
+                  </ul>
+                </div>
+                <div className="md:text-right">
+                  <p className="text-lg font-semibold text-san-marino-800">
+                    I miei contatti:
+                  </p>
+                  <ul className="mt-3 space-y-2 text-base text-san-marino-700">
+                    <li>
+                      <a
+                        href="tel:+393276504478"
+                        className="hover:text-san-marino-900"
+                      >
+                        - 327 650 4478
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="mailto:monicamastrella@hotmail.it"
+                        className="hover:text-san-marino-900"
+                      >
+                        - monicamastrella@hotmail.it
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
             <form className="grid gap-4" noValidate onSubmit={handleSubmit}>
               <label className="grid gap-2 text-sm font-semibold text-san-marino-800">
@@ -416,7 +443,7 @@ export default function Home() {
                   required
                   aria-invalid={Boolean(formErrors.email)}
                   aria-describedby={formErrors.email ? "email-error" : undefined}
-                  className={`w-full rounded-2xl border bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400 ${
+                  className={`w-full rounded-xl border bg-white px-3 py-2 text-sm text-san-marino-800 outline-none transition-colors focus:border-san-marino-400 ${
                     formErrors.email ? "border-red-400" : "border-san-marino-200"
                   }`}
                 />
@@ -437,7 +464,7 @@ export default function Home() {
                     aria-describedby={
                       formErrors.fullName ? "fullname-error" : undefined
                     }
-                    className={`w-full rounded-2xl border bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400 ${
+                    className={`w-full rounded-xl border bg-white px-3 py-2 text-sm text-san-marino-800 outline-none transition-colors focus:border-san-marino-400 ${
                       formErrors.fullName
                         ? "border-red-400"
                         : "border-san-marino-200"
@@ -459,7 +486,7 @@ export default function Home() {
                     aria-describedby={
                       formErrors.phone ? "phone-error" : undefined
                     }
-                    className={`w-full rounded-2xl border bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400 ${
+                    className={`w-full rounded-xl border bg-white px-3 py-2 text-sm text-san-marino-800 outline-none transition-colors focus:border-san-marino-400 ${
                       formErrors.phone ? "border-red-400" : "border-san-marino-200"
                     }`}
                   />
@@ -474,13 +501,13 @@ export default function Home() {
                 Messaggio
                 <textarea
                   name="message"
-                  rows={4}
+                  rows={3}
                   required
                   aria-invalid={Boolean(formErrors.message)}
                   aria-describedby={
                     formErrors.message ? "message-error" : undefined
                   }
-                  className={`w-full resize-none rounded-2xl border bg-white px-4 py-3 text-base text-san-marino-800 outline-none transition-colors focus:border-san-marino-400 ${
+                  className={`w-full resize-none rounded-xl border bg-white px-3 py-2 text-sm text-san-marino-800 outline-none transition-colors focus:border-san-marino-400 ${
                     formErrors.message
                       ? "border-red-400"
                       : "border-san-marino-200"
@@ -504,9 +531,14 @@ export default function Home() {
                   className="mt-1 h-4 w-4 rounded border-san-marino-300 text-san-marino-800 accent-san-marino-800"
                 />
                 <span>
-                  Acconsento al trattamento dei dati personali ai sensi
-                  dell’art. 13 d.lgs. 30 giugno 2013, n. 196 (EU Regulation
-                  2016/679)
+                  Acconsento al trattamento dei dati personali secondo quanto indicato nella{" "}
+                  <a
+                    href="/privacy-policy"
+                    className="underline underline-offset-2 hover:text-san-marino-900"
+                  >
+                    privacy policy
+                  </a>
+                  , ai sensi del Regolamento UE 2016/679 (GDPR) e del D.Lgs. 196/2003.
                 </span>
               </label>
               {formErrors.consent && (
@@ -516,7 +548,7 @@ export default function Home() {
               )}
               <button
                 type="submit"
-                className="group mt-2 inline-flex items-center justify-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-san-marino-900 disabled:cursor-not-allowed disabled:opacity-70"
+                className="group mt-2 inline-flex items-center justify-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-san-marino-900 hover:cursor-pointer disabled:cursor-not-allowed disabled:opacity-70"
                 disabled={formStatus === "sending"}
               >
                 {formStatus === "sending" ? "Invio..." : "Invia"}
@@ -535,7 +567,7 @@ export default function Home() {
                 </span>
               )}
             </form>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="mt-3 flex flex-wrap items-center gap-3">
               <span className="text-sm font-semibold text-san-marino-800">
                 Puoi trovarmi anche su
               </span>

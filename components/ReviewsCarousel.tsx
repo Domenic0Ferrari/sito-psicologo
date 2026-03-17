@@ -75,7 +75,7 @@ export default function ReviewsCarousel() {
   return (
     <section
       id="recensioni"
-      className="bg-san-marino-50 px-4 py-12 md:px-8 md:py-16"
+      className="bg-san-marino-50 px-4 py-12 md:px-8"
     >
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -95,7 +95,7 @@ export default function ReviewsCarousel() {
             <button
               type="button"
               onClick={goPrev}
-              className="inline-flex items-center rounded-full border-2 border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-san-marino-900 cursor-pointer"
+              className="inline-flex items-center rounded-full border border-san-marino-800 bg-san-marino-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-san-marino-900 cursor-pointer"
               aria-label="Recensione precedente"
             >
               Precedente
@@ -152,7 +152,7 @@ export default function ReviewsCarousel() {
           ))}
         </div>
         <div className="mt-6 flex flex-col gap-4 text-sm text-san-marino-700 md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-col items-start gap-3">
+          {/* <div className="flex flex-col items-start gap-3">
             <span className="text-sm font-semibold text-san-marino-800">
               Racconta la tua esperienza.
             </span>
@@ -163,7 +163,7 @@ export default function ReviewsCarousel() {
             >
               Aggiungi
             </a>
-          </div>
+          </div> */}
           <div className="flex flex-wrap items-center gap-4">
             {pageSize === 1 ? (
               <span>
