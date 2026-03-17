@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -534,6 +534,8 @@ export default function Home() {
                   Acconsento al trattamento dei dati personali secondo quanto indicato nella{" "}
                   <a
                     href="/privacy-policy"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="underline underline-offset-2 hover:text-san-marino-900"
                   >
                     privacy policy
