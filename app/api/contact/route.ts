@@ -57,14 +57,19 @@ export async function POST(request: Request) {
   `;
 
   try {
-    const result = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: fromEmail,
       to: toEmail,
       replyTo: email,
       subject,
       html,
     });
-    return Response.json({ ok: true, id: result.id });
+
+    if (error || !data?.id) {
+      return Response.json({ error: "Send failed" }, { status: 500 });
+    }
+
+    return Response.json({ ok: true, id: data.id });
   } catch (error) {
     return Response.json({ error: "Send failed" }, { status: 500 });
   }
